@@ -85,3 +85,20 @@ for(let elemento in arreglo)
 {
     console.log(elemento);
 }
+
+//objetos
+let objeto = 
+{
+    atributo_1: "valor_1",
+    atributo_2: 2
+}
+
+objeto.atributo_3 = arreglo;
+
+console.log(objeto);
+console.log(objeto.atributo_1);
+
+for(let elemento in arreglo)
+{
+    console.log(elemento);
+}
