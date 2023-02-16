@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 3 including css and styles</title>
+    <link rel="stylesheet" href="stylesheet_index_lab3.css">
+    <style>
+        h1
+        {
+            font-size: 45px;
+            font-weight: lighter;
+            text-align: center;
+        }
+
+        h2
+        {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        h3
+        {
+            font-family:'Times New Roman', Times, serif;
+            font-weight: lighter;
+            font-size: 15px;
+            text-align: center
+        }
+
+        footer {
+            background-color: black ;
+            font-size: 50px; 
+            text-align: center; 
+            color: aliceblue; 
+            font-weight: lighter;
+            font-size: 15px; 
+            position: fixed;
+            bottom: 0;
+            padding: 10px;
+            margin-left: -10px;
+            width: 100%;
+            height: 120px;   /* Height of the footer */
+        }
+
+        p
+        {
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        a
+        {
+            text-align: center; color: rgb(36, 115, 118);
+        }
+
+        form
+        {
+            text-align: center;
+            
+            
+        }
+
+        label
+        {
+            font-size: 15px;
+            font-weight: lighter;
+
+        }
+        a
+        {
+            color: rgb(255, 255, 255);
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <div class="title">
+        <h1>
+            My page but with style
+        </h1>
+    </div>
+
+    <div class="info">
+        <p>
+            As I said earlier, I have many hobbies...
+            <br>
+            <br>
+            <b>I enjoy the outdoors</b>
+            
+        </p>
+
+        <div class="outdoors">
+            <p>
+                click on the following word: 
+            </p>
+            <h2>
+                <a href="outdoors - index - lab -3.html">OUTDOORS</a>
+            </h2>
+            
+        </div>
+
+        <div class="questions">
+            <h2>
+                Preguntas a responder
+            </h2>
+
+            <h3>
+                Como ingeniero de software ¿cuál es tu recomendación sobre el uso de !important en un CSS? 
+            </h3>
+            <p> usarlo cuando se quiere declarar un atributo de forma que este tenga <br> prevalencia sobre otras declaraciones posteriores;
+                 es decir  <br> desactiva las reglas de cascada.</p>
+            <h3>
+                Si se pone una imagen de fondo en una página HTML, ¿por qué debe escogerse con cuidado?
+            </h3>
+            <p>por la resolucion de la imagen, derechos de autor, tamano</p>
+            <h3>
+                Como ingeniero de software, ¿cuál es tu recomendación al elegir las unidades de un propiedad de estilo entre %, px y pt?
+            </h3>
+            <p> '%' cuando es tamano para una area, ya que hace que sea proporcional al tamano de la pagina, 
+                <br> 'px' para cuando; por ejemlo, son paddings o borders y 'pt' para textos o cosas muy pequenas</p>
+            <h3>
+                ¿Por qué el uso de una versión minimizada del CSS mejora el rendimiento del sitio?
+            </h3>
+            <p>Tendra un menor número de solicitudes HTTP 
+                <br> por lo tanto la carga de la página web sera mas rapida</p>
+
+        </div>
+
+        <p> <b>Does this lab meet your expectations?</b></p>
+        <form>
+            <input type="radio" id ="yes" name="option" value="yes_">
+            <label for="yes">YES</label><br>
+            <input type="radio" id="ofc" name="option" value="ofc_">
+            <label for="ofc">OFC</label><br>
+            <input type="radio" id="ABSOLUTELY" name="option" value="ABSOLUTELY_">
+            <label for="ABSOLUTELY">ABSOLUTELY</label>
+        </form>
+
+        
+    </div>
+
+
+    <footer>
+        Gamaliel Marines Olvera
+        <br>
+        A01708746
+        <br>
+        a01708746@tec.mx
+        <br>
+        <p>Made with Visual Studio Code</p>
+        <a href="https://github.com/Gamaliel-Marines/Construccion-de-Software-y-Toma-de-Decisiones-.git" target  = "_blank"> Github</a>
+    </footer>
+    
+</body>
+</html>

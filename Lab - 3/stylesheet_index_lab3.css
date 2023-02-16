@@ -1,0 +1,63 @@
+body
+{
+    
+    background: linear-gradient(to right, lightyellow, lightpink, lightsalmon, lightcoral);
+}
+
+.title
+{
+    
+    
+    color: rgb(226, 93, 76);
+    background-color: rgb(255, 237, 216);
+    width: 70%;
+    margin: auto;
+    border: 10px solid rgb(255, 143, 162);
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 2px 4px 4px 2px #242424;
+    
+}
+
+.title:hover
+{
+    
+    background: linear-gradient(to left,white, lightcyan, lightblue);
+    width: 70%;
+    margin: auto;
+    border: 10px solid rgba(52, 188, 134, 0.756);
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 2px 4px 4px 2px darkcyan inset;
+    text-shadow: 2px 2px 4px darkcyan;
+    color: blue;
+    
+}
+
+.outdoors
+{
+        
+    background: linear-gradient(to right,white, lightcyan, lightgreen);
+    width: 70%;
+    margin: auto;
+    border: 10px solid rgb(22, 171, 101);
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 2px 4px 4px 2px #242424;
+    text-align: center;
+    color: black;
+}
+
+.outdoors:hover
+{
+    background: linear-gradient(to left,white, lightcyan, lightblue);
+    width: 70%;
+    margin: auto;
+    border: 10px solid rgba(52, 188, 134, 0.756);
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 2px 4px 4px 2px darkcyan inset;
+    text-shadow: 2px 2px 4px darkcyan;
+    color: black;
+    text-align: center;
+}
