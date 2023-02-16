@@ -47,3 +47,41 @@ function numero_alitas()
 }
 
 console.log(numero_alitas());
+
+
+// arrow functions
+let cantidad_alitas = () => {return 12};
+console.log(cantidad_alitas());
+
+
+
+let boton = document.getElementById("contador de clicks");
+boton.innerHTML = "Cuneta clicks";
+boton.onclick = () => {
+    let contador_clicks = 0;
+    contador_clicks++;
+    console.log(contador_clicks);
+    document.getElementById("clicks").innerHTML = contador_clicks;
+
+}
+
+
+//arreglos
+const arreglo = ["Elemento"];
+arreglo.push("Otro elemento");
+console.log(arreglo);
+arreglo["dos"] = 2;
+arreglo.length = 10;
+console.log(arreglo);
+
+// valores
+for(let valor of arreglo)
+{
+    console.log(valor);
+}
+
+//indices
+for(let elemento in arreglo)
+{
+    console.log(elemento);
+}
