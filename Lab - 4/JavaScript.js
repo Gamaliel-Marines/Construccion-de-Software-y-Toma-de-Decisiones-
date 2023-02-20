@@ -126,3 +126,26 @@ function reverseNumber(num_param) {
 }
 
 reverseNumber(num_param); 
+
+
+function Persona (nombre, edad)
+{
+    this.nombre = nombre; 
+    this.edad = edad;
+    this.getnombre = function ( ){
+    return nombre;
+    }
+}
+
+Persona.prototype.saludar = function()
+{
+    document.write("<p> Hola, soy " + this.getnombre() + " tengo " + this.edad + " </p> ");
+    
+}
+
+let objetoPersona = new Persona("Marko Robles", 20);
+let objPersona = new Persona("Juan Perez", 25);
+objetoPersona.saludar(); objPersona.saludar ();
+
+objetoPersona. saludar ();
+objPersona.saludar ();
