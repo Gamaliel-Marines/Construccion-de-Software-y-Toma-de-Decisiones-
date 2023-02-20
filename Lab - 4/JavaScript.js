@@ -132,7 +132,8 @@ function Persona (nombre, edad)
 {
     this.nombre = nombre; 
     this.edad = edad;
-    this.getnombre = function ( ){
+    this.getnombre = function ( )
+    {
     return nombre;
     }
 }
@@ -140,12 +141,12 @@ function Persona (nombre, edad)
 Persona.prototype.saludar = function()
 {
     document.write("<p> Hola, soy " + this.getnombre() + " tengo " + this.edad + " </p> ");
-    
 }
 
-let objetoPersona = new Persona("Marko Robles", 20);
-let objPersona = new Persona("Juan Perez", 25);
-objetoPersona.saludar(); objPersona.saludar ();
+let objetoPersona = new Persona("Mark", 20);
+let objPersona = new Persona("John", 25);
+objetoPersona.saludar(); 
+objPersona.saludar ();
 
-objetoPersona. saludar ();
+objetoPersona.saludar();
 objPersona.saludar ();
