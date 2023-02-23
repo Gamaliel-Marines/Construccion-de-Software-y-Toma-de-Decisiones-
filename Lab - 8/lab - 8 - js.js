@@ -2,7 +2,7 @@
 console.log("hola desde node");
 
 //el módulo filesystem sirve para acceder al sistema de archivos de la computadora
-const filesystem = require('fs');
+const fs = require('fs');
 
 const arreglo_promedio = [1,2,3];
 
@@ -35,7 +35,7 @@ function escribir_en_archivo(primera_frase)
 {
     const fs = require('fs');
 
-    fs.writeFile('/Users/gamalielmarines/Desktop/TC2005/Construccion-de-Software-y-Toma-de-Decisiones-/se_escribio.txt', primera_frase, err => 
+    fs.writeFile('/Users/gamalielmarines/Desktop/TC2005/Construccion-de-Software-y-Toma-de-Decisiones-/Lab - 8/se_escribio.txt', primera_frase, err => 
     {
         if (err)
         {
@@ -59,26 +59,25 @@ function temperature (celcius)
 {
     if(celcius > 28)
     {
-        fs.write("chill bro");
+        fs.writeFileSync("output.txt", "chill bro");
     }
 
     else if( celcius < 28 && celcius >= 20)
     {
-        fs.write("nice")
+        fs.writeFileSync("output.txt", "nice")
     }
 
     else if( celcius <= 19 && celcius > 0)
     {
-        fs.write("get moving man")
+        fs.writeFileSync("output.txt", "get moving man")
     }
 
     else
     {
-        fs.write("you dead *_*")
+        fs.writeFileSync("output.txt", "you dead *_*")
     }
 
 }
-
 temperature(celcius);
 
 
@@ -89,8 +88,8 @@ const http = require('http');
 const server = http.createServer( (request, response) => {    
     console.log(request.url);
     response.setHeader('Content-Type', 'text/html');
-    response.write("<h1>Hot cakes</h1>");
-    response.write("hola desde Node!");
+    response.write("<h1>Se Logro</h1>");
+    response.write("hello world!");
     response.end();
 });
 
