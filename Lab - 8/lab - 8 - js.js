@@ -49,11 +49,43 @@ function escribir_en_archivo(primera_frase)
     }
     );
 }
+escribir_en_archivo(primera_frase);
 
 // TODO: 3/3
 
+let celcius = 30;
 
-escribir_en_archivo(primera_frase);
+function temperature (celcius)
+{
+
+
+    if(celcius > 28)
+    {
+        fs.write("chill bro");
+    }
+
+    else if( celcius < 28 && celcius >= 20)
+    {
+        fs.write("nice")
+
+    }
+
+    else if( celcius <= 19 && celcius > 0)
+    {
+        fs.write("get moving man")
+    }
+
+    else
+    {
+        fs.write("you dead *_*")
+
+    }
+
+}
+
+temperature(celcius);
+
+
 
 // http es un módulo que permite crear servidores web y manejar las peticiones y respuestas
 const http = require('http');
