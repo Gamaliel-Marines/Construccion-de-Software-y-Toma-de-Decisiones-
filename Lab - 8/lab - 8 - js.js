@@ -57,8 +57,6 @@ let celcius = 30;
 
 function temperature (celcius)
 {
-
-
     if(celcius > 28)
     {
         fs.write("chill bro");
@@ -67,7 +65,6 @@ function temperature (celcius)
     else if( celcius < 28 && celcius >= 20)
     {
         fs.write("nice")
-
     }
 
     else if( celcius <= 19 && celcius > 0)
@@ -78,7 +75,6 @@ function temperature (celcius)
     else
     {
         fs.write("you dead *_*")
-
     }
 
 }
