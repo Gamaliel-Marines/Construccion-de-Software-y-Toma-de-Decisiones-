@@ -4,18 +4,6 @@ console.log("hola desde node");
 //el módulo filesystem sirve para acceder al sistema de archivos de la computadora
 const filesystem = require('fs');
 
-// filesystem.writeFileSync('hola.txt', 'Hola desde node');
-
-
-// const arreglo = [5000, 60, 61, 90, 100, 10, 20, 10000, 0, 120, 2000, 340, 1000, 50];
-
-// //Imprimir de manera asíncrona los elementos del arreglo (se imprimen en orden por su valor)
-// for (let item of arreglo) {
-//     setTimeout(() => {
-//         console.log(item);
-//     }, item);
-// } 
-
 const arreglo_promedio = [1,2,3];
 
 // TODO: 1/3.
@@ -61,6 +49,9 @@ function escribir_en_archivo(primera_frase)
     }
     );
 }
+
+// TODO: 3/3
+
 
 escribir_en_archivo(primera_frase);
 
