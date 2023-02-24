@@ -82,15 +82,18 @@ temperature(celcius);
 
 
 
-//! servidor!!
 const http = require('http');
 
-const server = http.createServer( (request, response) => {    
-    console.log(request.url);
-    response.setHeader('Content-Type', 'text/html');
-    response.write("<h1>Se Logro</h1>");
-    response.write("hello world!");
-    response.end();
+// link a proyecto anterior
+fs.readFile("/Users/gamalielmarines/Desktop/TC2005/Construccion-de-Software-y-Toma-de-Decisiones-/Lab - 1/2005-1.html",  function (err, html) {
+    if (err) {
+        throw err; 
+    }
+    const server = http.createServer((request, response) => {
+        console.log(request.url);
+        response.setHeader('Content-Type', 'text/html');
+        response.write(html);
+        response.end();
+    })
+    server.listen(3000);
 });
-
-server.listen(3000);
