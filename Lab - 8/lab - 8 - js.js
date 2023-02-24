@@ -1,7 +1,7 @@
 //* primer comando
 console.log("hola desde node");
 
-//el módulo filesystem sirve para acceder al sistema de archivos de la computadora
+
 const fs = require('fs');
 
 const arreglo_promedio = [1,2,3];
@@ -84,7 +84,7 @@ temperature(celcius);
 
 const http = require('http');
 
-// link a proyecto anterior
+
 fs.readFile("/Users/gamalielmarines/Desktop/TC2005/Construccion-de-Software-y-Toma-de-Decisiones-/Lab - 1/2005-1.html",  function (err, html) {
     if (err) {
         throw err; 
