@@ -81,6 +81,7 @@ const server = http.createServer( (request, response) => {
                 respuesta += "<li>contraseña</li>";
             }
 
+            //corre el if
             try
             {
                 if (datos_completos.split('&')[0].split('=')[0] != " " || datos_completos.split('&')[1].split('=')[0] != " ")
@@ -88,25 +89,25 @@ const server = http.createServer( (request, response) => {
                         respuesta += "<li>1 username</li>";
                 }
             }
-            
+            //si hay un error lo "atrapa"
             catch (error)
             {
+                //"corre" esto para que no se "caiga"
 
             }
 
             respuesta += "</ul>";
-
             response.write(respuesta);
-
             return response.end();
         });
         
     }
 
-    //TODO: CHECK
     else 
     {
+        //! manda el 404 -> archivo no encontrado
         response.statusCode = 404;
+        //el tipo de contenido que va a tener el archivo (html)
         response.setHeader('Content-Type', 'text/html');
         response.write("<!DOCTYPE html>");
         response.write("<html>");
