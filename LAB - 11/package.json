@@ -4,7 +4,7 @@
   "description": "lab11",
   "main": "lab - 11",
   "scripts": {
-    "start": "node lab - 11 - js.js",
+    "start": "node \"lab - 11 - js.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,4 +17,6 @@
     "url": "https://github.com/Gamaliel-Marines/Construccion-de-Software-y-Toma-de-Decisiones-/issues"
   },
   "homepage": "https://github.com/Gamaliel-Marines/Construccion-de-Software-y-Toma-de-Decisiones-#readme"
+  
+
 }
