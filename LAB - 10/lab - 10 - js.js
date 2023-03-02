@@ -37,9 +37,9 @@ const server = http.createServer( (request, response) => {
             
             <div>
             
-            <label for=»password»> Contraseña: </label>
+            <label for="contraseña"> Contraseña: </label>
             
-            <input type=»password» id=»password» required/>
+            <input type="password"  id="password" required/>
             
             </div>
             
@@ -72,34 +72,27 @@ const server = http.createServer( (request, response) => {
             response.write('<head><meta charset="utf-8"></head><body>');
             response.write('<h1>You logged in</h1>');
 
-            let respuesta = "<ul>";
-            
-            const datos_usuario = datos_completos.split('=')[0];
-            if (datos_usuario !== "" )
-            {
-                respuesta += "<li>username</li>";
-                respuesta += "<li>contraseña</li>";
-            }
-
+            let respuesta = "<ul>"; 
+        
             //corre el if
             try
             {
-                if (datos_completos.split('&')[0].split('=')[0] != " " || datos_completos.split('&')[1].split('=')[0] != " ")
+                if (datos_completos.split('&')[0] != " " || datos_completos.split('&')[1] != " ")
                 {
                         respuesta += "<li>1 username</li>";
+                        respuesta += "<li>1 password</li>";      
                 }
             }
+            
             //si hay un error lo "atrapa"
             catch (error)
             {
                 //"corre" esto para que no se "caiga"
-
             }
-
             respuesta += "</ul>";
             response.write(respuesta);
             return response.end();
-        });
+        }); 
         
     }
 

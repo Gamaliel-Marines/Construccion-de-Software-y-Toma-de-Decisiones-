@@ -1,0 +1,20 @@
+{
+  "name": "lab-12",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lab-12-js.js",
+  "scripts": {
+    "start": "node lab-12-js.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gamaliel-Marines/Construccion-de-Software-y-Toma-de-Decisiones-.git"
+  },
+  "author": "Gamaliel Marines",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Gamaliel-Marines/Construccion-de-Software-y-Toma-de-Decisiones-/issues"
+  },
+  "homepage": "https://github.com/Gamaliel-Marines/Construccion-de-Software-y-Toma-de-Decisiones-#readme"
+}
