@@ -1,4 +1,6 @@
+const { response } = require('express');
 const express = require('express');
+const { request } = require('http');
 
 const router = express.Router();
 
@@ -42,6 +44,10 @@ router.post('/pedir', (request, response, next) => {
     console.log(request.body);
 
     response.send("Pediste " + request.body.hot_cakes + " hot cakes");
+});
+
+router.get('/pedido',(request, response, next) => {
+    response.sendFile(path.join(__dirname,'..','views', 'index.html'));
 });
 
 module.exports = router;
