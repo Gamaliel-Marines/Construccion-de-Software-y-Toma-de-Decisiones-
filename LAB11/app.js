@@ -18,8 +18,11 @@ app.use('/home', (request, response, next) => {
 
 //route
 const Lab11Routes = require('./routes/lab11.routes');
-
 app.use('/lab11', Lab11Routes);
+const Lab11aRoutes = require('./routes/lab11a.routes');
+app.use('/lab11a', Lab11aRoutes);
+
+
 
 app.use((request, response, next) => {
     console.log('wrong route, db made a play');
