@@ -19,7 +19,6 @@ app.use((request, response, next) => {
 const Lab12Routes = require('./routes/lab12route.routes');
 app.use('/lab12route',Lab12Routes);
 
-
 app.use((request, response, next) => {
     response.status(404).send('<h1>Error 404 - Page not found</h1>');
 });
