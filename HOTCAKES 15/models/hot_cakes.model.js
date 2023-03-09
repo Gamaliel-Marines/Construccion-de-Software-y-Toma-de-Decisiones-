@@ -1,3 +1,5 @@
+const db = require('../util/database');
+
 const hot_cakes = [
     {
         nombre: "belgas",
@@ -83,7 +85,16 @@ module.exports = class HotCake {
     }
 
     //Este método servirá para devolver los objetos del almacenamiento persistente.
-    static fetchAll() {
+    static fetchAll()
+    {
+        db.execute('SELECT * FROM hotcakes')
+        .then(([rows,fieldData]) =>{
+            console.log(rows);
+        })
+        .catch(error => {
+            console.log(error);
+        });
+
         return hot_cakes;
     }
 
