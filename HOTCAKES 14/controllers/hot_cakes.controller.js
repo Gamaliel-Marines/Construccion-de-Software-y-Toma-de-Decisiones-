@@ -1,7 +1,25 @@
 const HotCake = require('../models/hot_cakes.model');
 
 exports.get_lista = (request, response, next) => {
+    
+    //let cookies  = request.get('Cookies')||'';
+
+    const cookies  = request.get('Cookies') || '';
+
+    let consultas = cookies.split('=')[1] || 0;
+
+    consultas++;
+
+    response.setHeader('Set-Cookie', 'consultas=' + consultas);
+
+    response.render('lista',
+    {
+        hot_cakes: HotCake.fetchAll(),
+        ultimo_hot_cake: request.session.ultimo_hot_cake || '',
+    });
+
     response.render('lista', { hot_cakes: HotCake.fetchAll() });
+
 };
 
 exports.get_nuevo = (request, response, next) => {
@@ -19,6 +37,8 @@ exports.post_nuevo = (request, response, next) => {
     });
 
     hot_cake.save();
+
+    request.session.ultimo_hot_cake=hot_cake.nombre.
 
     response.status(300).redirect('/hot_cakes/lista');
 };
