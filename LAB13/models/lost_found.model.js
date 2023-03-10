@@ -1,4 +1,4 @@
-const hot_cakes = [
+const lost_founds = [
     {
         nombre: "belgas",
         imagen: "https://t1.uc.ltmcdn.com/es/posts/8/9/7/como_hacer_waffles_con_harina_de_hot_cakes_50798_paso_5_600.jpg",
@@ -65,26 +65,26 @@ const hot_cakes = [
     },
 ];
 
-module.exports = class HotCake {
+module.exports = class LOSTFOUND {
 
     //Constructor de la clase. Sirve para crear un nuevo objeto, y en él se definen las propiedades del modelo
-    constructor(mi_hot_cake) {
-        this.nombre = mi_hot_cake.nombre || "Belgas";
-        this.imagen = mi_hot_cake.imagen || "https://bulma.io/images/placeholders/1280x960.png";
-        this.descripcion = mi_hot_cake.descripcion || "Un delicioso hot cake";
-        this.handle = mi_hot_cake.handle || "@hot_cake";
-        this.ingredientes = mi_hot_cake.ingredientes || "mantequilla, harina, huevo y leche";
-        this.precio = mi_hot_cake.precio || "150";
+    constructor(lost_and_found) {
+        this.nombre = lost_and_found.nombre || "Belgas";
+        this.imagen = lost_and_found.imagen || "https://bulma.io/images/placeholders/1280x960.png";
+        this.descripcion = lost_and_found.descripcion || "Un delicioso hot cake";
+        this.handle = lost_and_found.handle || "@hot_cake";
+        this.ingredientes = lost_and_found.ingredientes || "mantequilla, harina, huevo y leche";
+        this.precio = lost_and_found.precio || "150";
     }
 
     //Este método servirá para guardar de manera persistente el nuevo objeto. 
     save() {
-        hot_cakes.push(this);
+        lost_founds.push(this);
     }
 
     //Este método servirá para devolver los objetos del almacenamiento persistente.
     static fetchAll() {
-        return hot_cakes;
+        return lost_founds;
     }
 
 }

@@ -1,4 +1,4 @@
-const HotCake = require('../models/hot_cakes.model');
+const LOSTFOUND = require('../models/lost_found.model');
 
 exports.get_lista = (request, response, next) => {
     
@@ -14,11 +14,11 @@ exports.get_lista = (request, response, next) => {
 
     response.render('lista',
     {
-        hot_cakes: HotCake.fetchAll(),
-        ultimo_hot_cake: request.session.ultimo_hot_cake || '',
+        lost_found: LOSTFOUND.fetchAll(),
+        lost_and_found: request.session.lost_and_found || '',
     });
 
-    response.render('lista', { hot_cakes: HotCake.fetchAll() });
+    response.render('lista', { lost_found: LOSTFOUND.fetchAll() });
 
 };
 
@@ -28,7 +28,7 @@ exports.get_nuevo = (request, response, next) => {
 
 exports.post_nuevo = (request, response, next) => {
 
-    const hot_cake = new HotCake({
+    const lost_found = new LOSTFOUND({
         nombre: request.body.nombre,
         descripcion: request.body.descripcion,
         handle: request.body.handle,
@@ -36,11 +36,11 @@ exports.post_nuevo = (request, response, next) => {
         precio: request.body.precio,
     });
 
-    hot_cake.save();
+    lost_found.save();
 
-    request.session.ultimo_hot_cake=hot_cake.nombre.
+    request.session.lost_and_found=lost_found.nombre.
 
-    response.status(300).redirect('/hot_cakes/lista');
+    response.status(300).redirect('/lost_found/lista');
 };
 
 exports.get_pedir = (request, response, next) => {
@@ -52,8 +52,8 @@ exports.get_pedir = (request, response, next) => {
                 <meta charset="utf-8">
             </head>
             <body>
-                <h1>Hot cakes</h1>
-                <form action="/hot_cakes/pedir" method="POST">
+                <h1>LOST & FOUND</h1>
+                <form action="/lost_found/pedir" method="POST">
                     <fieldset>
                         <legend>Escoge tu desayuno:</legend>
                         <div>
@@ -82,7 +82,7 @@ exports.get_pedir = (request, response, next) => {
 exports.post_pedir = (request, response, next) => {
     console.log(request.body);
 
-    response.send("Pediste " + request.body.hot_cakes + " hot cakes");
+    response.send("Pediste " + request.body.lost_found + " hot cakes");
 }
 
 exports.get_pedido = (request, response, next) => {

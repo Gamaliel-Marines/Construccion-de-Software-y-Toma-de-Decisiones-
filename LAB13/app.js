@@ -31,14 +31,12 @@ app.use('/home', (request, response, next) => {
     response.send('Bienvenido a casa!'); 
 });
 
-const rutasUsers = require('./routes/users.routes');
-app.use('/users',rutasUsers);
 
-const hotcakesRutas = require('./routes/hot_cakes.routes');
+const lostFound = require('./routes/lost_found.routes');
 
 
 
-app.use('/hot_cakes', hotcakesRutas);
+app.use('/lost_found', lostFound);
 
 app.use((request, response, next) => {
     console.log('Otro middleware!');
@@ -46,7 +44,7 @@ app.use((request, response, next) => {
     response.status(404);
 
     //Manda la respuesta
-    response.send('Lo sentimos, ya no tenemos hot cakes'); 
+    response.send('that is why you lost something'); 
 });
 
 app.listen(3000);

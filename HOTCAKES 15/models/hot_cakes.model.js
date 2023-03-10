@@ -81,21 +81,42 @@ module.exports = class HotCake {
 
     //Este método servirá para guardar de manera persistente el nuevo objeto. 
     save() {
-        hot_cakes.push(this);
+        //hot_cakes.push(this);
+        //consulta parametrizada
+        return db.execute(`INSERT INTO hotcakes (nombre, imagen, descripcion, handle, precio) VALUES (?,?,?,?,?)`,
+        [this.nombre, this.imagen, this.descripcion, this.handle, this.precio]
+    );
     }
 
     //Este método servirá para devolver los objetos del almacenamiento persistente.
+    
+    static fetch(id)
+    {
+        let query = `SELECT * FROM hotcakes`;
+        if(id != 0)
+        {
+            query += ` WHERE id = ?`
+            return db.execute(query, [id]);
+        }  
+            
+        return db.execute(query);
+        
+    }
+    
     static fetchAll()
     {
-        db.execute('SELECT * FROM hotcakes')
-        .then(([rows,fieldData]) =>{
-            console.log(rows);
-        })
-        .catch(error => {
-            console.log(error);
-        });
-
-        return hot_cakes;
+        return db.execute(
+            `SELECT *
+            FROM hotcakes` 
+            );  
     }
 
+    static fetchOne(id)
+    {
+        return db.execute(
+            `SELECT *
+            FROM hotcakes
+            WHERE id = ?`, [id] 
+            );  
+    }
 }

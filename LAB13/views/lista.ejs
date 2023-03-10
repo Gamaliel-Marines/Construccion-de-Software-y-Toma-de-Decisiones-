@@ -1,40 +1,40 @@
 <%- include('includes/head.ejs') %>
 
-<h1 class="title">Menú</h1>
+<h1 class="title">LOST FOUNDS</h1>
 
-<a href="/hot_cakes/nuevo" class="button is-link is-rounded">Registrar</a>
+<a href="/lost_found/nuevo" class="button is-link is-rounded">AFREGAR</a>
 
 <br><br>
 
-<% if (hot_cakes.length > 0) { %>
+<% if (lost_found.length > 0) { %>
     <div class="columns is-multiline">
-        <% for (let hot_cake of hot_cakes) { %>
+        <% for (let lost_found of lost_found) { %>
             <div class="column is-3">
                 <div class="card">
                     <div class="card-image">
                         <figure class="image is-4by3">
-                            <img src="<%= hot_cake.imagen %>" alt="Placeholder image">
+                            <img src="<%= lost_founds.imagen %>" alt="Placeholder image">
                         </figure>
                     </div>
                     <div class="card-content">
                         <div class="media">
                             <div class="media-left">
                             <figure class="image is-48x48">
-                                <img src="<%= hot_cake.imagen %>" alt="Placeholder image">
+                                <img src="<%= lost_founds.imagen %>" alt="Placeholder image">
                             </figure>
                             </div>
                             <div class="media-content">
-                            <p class="title is-4"><%= hot_cake.nombre %></p>
-                            <p class="subtitle is-6"><%= hot_cake.handle %> $<%= hot_cake.precio %> </p>
+                            <p class="title is-4"><%= lost_founds.nombre %></p>
+                            <p class="subtitle is-6"><%= lost_founds.handle %> $<%= lost_founds.precio %> </p>
                             </div>
                         </div>
                     
                         <div class="content">
-                            <%= hot_cake.descripcion %> 
+                            <%= lost_founds.descripcion %> 
                             <br>
                             Ingredientes:
                             <br>
-                            <%= hot_cake.ingredientes %> 
+                            <%= lost_founds.ingredientes %> 
                         </div>
                     </div>
                 </div>
@@ -42,19 +42,19 @@
         <% } %>
     </div>
 <% } else { %>
-    <h1>No hay hot cakes >:( </h1>
+    <h1>NO HAN PERDIDO NADA SOLO TÚ</h1>
 <% } %>   
 
 <br><br>
 
 <%
-if (ultimo_hot_cake != ''){ %>
+if (lost_and_founds != ''){ %>
     <div class = "notification is-link is-light">
-        El ultimo hot cake registrado fue: <%= ultimo_hot_cake %>
+        El ultimo objeto perdido fue: <%= lost_and_founds %>
     </div>
 
 
 <%}%>
-<a href="/hot_cakes/nuevo" class="button is-link is-rounded">Registrar</a>
+<a href="/lost_found/nuevo" class="button is-link is-rounded">Registrar</a>
 
 <%- include('includes/foot.ejs') %>

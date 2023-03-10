@@ -12,13 +12,39 @@ exports.get_lista = (request, response, next) => {
 
     response.setHeader('Set-Cookie', 'consultas=' + consultas);
 
-    response.render('lista',
-    {
-        hot_cakes: HotCake.fetchAll(),
-        ultimo_hot_cake: request.session.ultimo_hot_cake || '',
-    });
+    const id = request.params.id || 0;
 
-    response.render('lista', { hot_cakes: HotCake.fetchAll() });
+
+    HotCake.fetch(id)
+    .then(([rows,fieldData]) => {
+        console.log(rows);
+
+        response.render('lista', {
+            hot_cakes: rows,
+            ultimo_hot_cake: request.session.ultimo_hot_cake || '',
+        });
+
+        })
+        .catch(error => {
+            console.log(error);
+        });
+
+
+    // HotCake.fetchAll()
+    // .then(([rows,fieldData]) => {
+    // console.log(rows);
+
+    // response.render('lista', {
+    //     hot_cakes: rows,
+    //     ultimo_hot_cake: request.session.ultimo_hot_cake || '',
+    // });
+
+    // })
+    // .catch(error => {
+    //     console.log(error);
+    // });
+
+
 
 };
 
@@ -36,11 +62,14 @@ exports.post_nuevo = (request, response, next) => {
         precio: request.body.precio,
     });
 
-    hot_cake.save();
+    hot_cake.save().then(([rows, fieldData]) => {
+        request.session.ultimo_hot_cake = hot_cake.nombre;
+        response.status(300).redirect('/hot_cakes/lista');
 
-    request.session.ultimo_hot_cake=hot_cake.nombre.
-
-    response.status(300).redirect('/hot_cakes/lista');
+    }).catch(error => {
+        console.log(error);
+    });
+    
 };
 
 exports.get_pedir = (request, response, next) => {
