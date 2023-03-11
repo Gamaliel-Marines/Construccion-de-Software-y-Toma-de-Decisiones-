@@ -14,11 +14,11 @@ exports.get_lista = (request, response, next) => {
 
     response.render('lista',
     {
-        lost_found: LOSTFOUND.fetchAll(),
-        ultimo_lostfound: request.session.descripcion || '',
+        lost_founds: LOSTFOUND.fetchAll(),
+        ultimo_lostfound: request.session.ultimo_lostfound || '',
     });
 
-    response.render('lista', { lost_found: LOSTFOUND.fetchAll() });
+    response.render('lista', { lost_founds: LOSTFOUND.fetchAll() });
 
 };
 
@@ -29,11 +29,11 @@ exports.get_nuevo = (request, response, next) => {
 exports.post_nuevo = (request, response, next) => {
 
     const lost_found = new LOSTFOUND({
-        nombre: request.body.nombre,
         descripcion: request.body.descripcion,
-        handle: request.body.handle,
-        ingredientes: request.body.ingredientes,
-        precio: request.body.precio,
+        lugar: request.body.lugar,
+        fecha: request.body.fecha,
+        matricula: request.body.matricula,
+        nombre: request.body.nombre,        
     });
 
     lost_found.save();

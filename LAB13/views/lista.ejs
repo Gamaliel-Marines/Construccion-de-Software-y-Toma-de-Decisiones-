@@ -13,28 +13,28 @@
                 <div class="card">
                     <div class="card-image">
                         <figure class="image is-4by3">
-                            <img src="<%= lost_founds.imagen %>" alt="Placeholder image">
+                            <img src="<%= lost_found.imagen %>" alt="Placeholder image">
                         </figure>
                     </div>
                     <div class="card-content">
                         <div class="media">
                             <div class="media-left">
                             <figure class="image is-48x48">
-                                <img src="<%= lost_founds.imagen %>" alt="Placeholder image">
+                                <img src="<%= lost_found.imagen %>" alt="Placeholder image">
                             </figure>
                             </div>
                             <div class="media-content">
-                            <p class="title is-4"><%= lost_founds.nombre %></p>
-                            <p class="subtitle is-6"><%= lost_founds.handle %> $<%= lost_founds.precio %> </p>
+                            <p class="title is-4"><%= lost_found.descripcion %></p>
+                            <p class="subtitle is-6"><%= lost_found.nombre %> $<%= lost_founds.matricula %> </p>
                             </div>
                         </div>
                     
                         <div class="content">
-                            <%= lost_founds.descripcion %> 
+                            <%= lost_found.lugar %> 
                             <br>
-                            Ingredientes:
+                            Fecha:
                             <br>
-                            <%= lost_founds.ingredientes %> 
+                            <%= lost_found.fecha %> 
                         </div>
                     </div>
                 </div>
@@ -55,6 +55,6 @@ if (ultimo_lostfound != ''){ %>
 
 
 <%}%>
-<a href="/lost_found/nuevo" class="button is-link is-rounded">Registrar</a>
+<a href="/lost_founds/nuevo" class="button is-link is-rounded">Registrar</a>
 
 <%- include('includes/foot.ejs') %>
