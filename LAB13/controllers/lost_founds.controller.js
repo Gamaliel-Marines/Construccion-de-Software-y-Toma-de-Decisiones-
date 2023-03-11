@@ -1,4 +1,4 @@
-const LOSTFOUND = require('../models/lost_found.model');
+const LOSTFOUND = require('../models/lost_founds.model');
 
 exports.get_lista = (request, response, next) => {
     
@@ -40,7 +40,7 @@ exports.post_nuevo = (request, response, next) => {
 
     request.session.ultimo_lostfound=lost_found.nombre.
 
-    response.status(300).redirect('/lost_found/lista');
+    response.status(300).redirect('/lost_founds/lista');
 };
 
 exports.get_pedir = (request, response, next) => {
@@ -53,7 +53,7 @@ exports.get_pedir = (request, response, next) => {
             </head>
             <body>
                 <h1>LOST & FOUND</h1>
-                <form action="/lost_found/pedir" method="POST">
+                <form action="/lost_founds/pedir" method="POST">
                     <fieldset>
                         <legend>Escoge tu desayuno:</legend>
                         <div>

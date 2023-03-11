@@ -32,11 +32,11 @@ app.use('/home', (request, response, next) => {
 });
 
 
-const lostFound = require('./routes/lost_found.routes');
+const lostFound = require('./routes/lost_founds.routes');
 
 
 
-app.use('/lost_found', lostFound);
+app.use('/lost_founds', lostFound);
 
 app.use((request, response, next) => {
     console.log('Otro middleware!');

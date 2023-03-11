@@ -3,7 +3,7 @@ const path = require('path');
 
 const router = express.Router();
 
-const lost_foundController = require('../controllers/lost_found.controller');
+const lost_foundController = require('../controllers/lost_founds.controller');
 
 router.get('/lista', lost_foundController.get_lista);
 
