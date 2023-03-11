@@ -2,13 +2,13 @@
 
 <h1 class="title">LOST FOUNDS</h1>
 
-<a href="/lost_found/nuevo" class="button is-link is-rounded">AFREGAR</a>
+<a href="/lost_found/nuevo" class="button is-link is-rounded">AGREGAR</a>
 
 <br><br>
 
-<% if (lost_found.length > 0) { %>
+<% if (lost_founds.length > 0) { %>
     <div class="columns is-multiline">
-        <% for (let lost_found of lost_found) { %>
+        <% for (let lost_found of lost_founds) { %>
             <div class="column is-3">
                 <div class="card">
                     <div class="card-image">
@@ -48,9 +48,9 @@
 <br><br>
 
 <%
-if (lost_and_founds != ''){ %>
+if (ultimo_lostfound != ''){ %>
     <div class = "notification is-link is-light">
-        El ultimo objeto perdido fue: <%= lost_and_founds %>
+        El ultimo objeto perdido fue: <%= ultimo_lostfound %>
     </div>
 
 

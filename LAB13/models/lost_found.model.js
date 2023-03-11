@@ -68,13 +68,13 @@ const lost_founds = [
 module.exports = class LOSTFOUND {
 
     //Constructor de la clase. Sirve para crear un nuevo objeto, y en él se definen las propiedades del modelo
-    constructor(lost_and_found) {
-        this.nombre = lost_and_found.nombre || "Belgas";
-        this.imagen = lost_and_found.imagen || "https://bulma.io/images/placeholders/1280x960.png";
-        this.descripcion = lost_and_found.descripcion || "Un delicioso hot cake";
-        this.handle = lost_and_found.handle || "@hot_cake";
-        this.ingredientes = lost_and_found.ingredientes || "mantequilla, harina, huevo y leche";
-        this.precio = lost_and_found.precio || "150";
+    constructor(my_lostfound) {
+        this.nombre = my_lostfound.nombre || "Belgas";
+        this.imagen = my_lostfound.imagen || "https://bulma.io/images/placeholders/1280x960.png";
+        this.descripcion = my_lostfound.descripcion || "Un delicioso hot cake";
+        this.handle = my_lostfound.handle || "@hot_cake";
+        this.ingredientes = my_lostfound.ingredientes || "mantequilla, harina, huevo y leche";
+        this.precio = my_lostfound.precio || "150";
     }
 
     //Este método servirá para guardar de manera persistente el nuevo objeto. 

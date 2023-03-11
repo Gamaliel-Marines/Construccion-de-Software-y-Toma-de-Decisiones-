@@ -15,7 +15,7 @@ exports.get_lista = (request, response, next) => {
     response.render('lista',
     {
         lost_found: LOSTFOUND.fetchAll(),
-        lost_and_found: request.session.lost_and_found || '',
+        ultimo_lostfound: request.session.descripcion || '',
     });
 
     response.render('lista', { lost_found: LOSTFOUND.fetchAll() });
@@ -38,7 +38,7 @@ exports.post_nuevo = (request, response, next) => {
 
     lost_found.save();
 
-    request.session.lost_and_found=lost_found.nombre.
+    request.session.ultimo_lostfound=lost_found.nombre.
 
     response.status(300).redirect('/lost_found/lista');
 };
@@ -65,8 +65,8 @@ exports.get_pedir = (request, response, next) => {
                             <label for="cafe">Café</label>
                         </div>
                         <div>
-                            <input type="number" id="hot_cakes" name="hot_cakes" value="0" min="0">
-                            <label for="hot_cakes"> hot cakes</label>
+                            <input type="number" id="lost_founds" name="lost_founds" value="0" min="0">
+                            <label for="lost_founds"> LOST FOUNDS</label>
                         </div>
                     </fieldset>
                     <br>
@@ -82,7 +82,7 @@ exports.get_pedir = (request, response, next) => {
 exports.post_pedir = (request, response, next) => {
     console.log(request.body);
 
-    response.send("Pediste " + request.body.lost_found + " hot cakes");
+    response.send("Buscas este " + request.body.lost_founds + " objeto perdido");
 }
 
 exports.get_pedido = (request, response, next) => {
