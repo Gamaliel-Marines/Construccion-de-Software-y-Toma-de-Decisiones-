@@ -13,6 +13,7 @@ exports.get_login = (request, response, next) => {
         mensaje: mensaje,
         isLoggedIn: request.session.isLoggedIn || false,
         nombre: request.session.nombre || '',
+        csrfToken: request.csrfToken(),
     });
 };
 

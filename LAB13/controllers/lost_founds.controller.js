@@ -1,8 +1,7 @@
 const LOSTFOUND = require('../models/lost_founds.model');
 
 exports.get_lista = (request, response, next) => {
-    
-    //let cookies  = request.get('Cookies')||'';
+
 
     const cookies  = request.get('Cookies') || '';
 
