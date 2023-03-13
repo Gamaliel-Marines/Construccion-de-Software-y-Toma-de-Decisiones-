@@ -1,5 +1,6 @@
 <%- include('includes/head.ejs') %>
 
+<br>
 <h1 class="title">LOST FOUNDS</h1>
 
 <a href="/lost_founds/nuevo" class="button is-link is-rounded">AGREGAR</a>
@@ -7,7 +8,7 @@
 <br><br>
 
 <% if (lost_founds.length > 0) { %>
-    <div class="columns is-multiline">
+    <div id="containercards" class="columns is-multiline">
         <% for (let lost_found of lost_founds) { %>
             <div class="column is-3">
                 <div class="card">
@@ -24,8 +25,8 @@
                             </figure>
                             </div>
                             <div class="media-content">
-                            <p class="title is-4"><%= lost_found.descripcion %></p>
-                            <p class="subtitle is-6">Nombre: <%= lost_found.nombre %> <br> Matricula: <%= lost_found.matricula %>  </p>
+                            <p id="ctitle" class="title is-4"><%= lost_found.descripcion %></p>
+                            <p id="csubtitle" class="subtitle is-6">Nombre: <%= lost_found.nombre %> <br> Matricula: <%= lost_found.matricula %>  </p>
                             </div>
                         </div>
                     
@@ -50,18 +51,21 @@
 <br><br>
 
 <%if (ultimo_lostfound != ''){ %>
-    <div class = "notification is-link is-light">
+    <div id="notobjperdido" class = "notification is-link is-light">
         El ultimo objeto perdido fue: <%= ultimo_lostfound %>
     </div>
 
 
 <%} else{%>
 
-    <div class = "notification is-link is-light">
+    <div style="background-color: rgb(202, 248, 255); font-weight: bolder;" class = "notification is-link is-light">
         No se han perdido objetos recientemente %>
     </div>
     <%}%>
 
 <a href="/lost_founds/nuevo" class="button is-link is-rounded">Registrar</a>
+
+<br>
+<br>
 
 <%- include('includes/foot.ejs') %>
