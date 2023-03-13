@@ -1,0 +1,39 @@
+const User = require('../models/users.model');
+
+exports.get_login = (request, response, next) => {
+    const mensaje = '';
+
+    if(request.session.mensaje != '')
+    {
+        mensaje = request.session.mensaje;
+        request.session.mensaje = '';
+    }
+
+    response.render('login', {
+        mensaje: mensaje,
+    });
+};
+
+exports.get_signup = (request, response, next) => {
+    response.render('signup');
+};
+
+exports.post_signup = (request, response, next) => {
+    const nuevo_usuario = new User({
+        nombre: request.bondy.nombre,
+        username: request.bondy.username,
+        password: request.bondy.password,
+    });
+
+    nuevo_usuario.save().then(([rows, fieldData]) => {
+        request.session.mensaje = "usuario registrado.";
+        response.redirect('users/login');
+    }).
+    cath((error) => console.log(error));
+};
+
+exports.logout = (request, response, next) => {
+    request.session.destroy(() => {
+        response.redirect('/'); //Este código se ejecuta cuando la sesión se elimina.
+    });
+};

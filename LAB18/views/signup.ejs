@@ -1,0 +1,24 @@
+<%- include('includes/head.ejs') %>
+
+<h1 class="title">SIGN UP</h1>
+
+<br><br>
+
+<form action="/hot_cakes/nuevo" method="POST">
+
+    <label for="nombre">Nombre:</label>
+    <input required name="nombre" id="nombre" class="input is-rounded" type="text" placeholder="TU NOMBRE">
+
+    <label for="usename">Nombre de usuario:</label>
+    <input name="usename" id="usename" class="input is-rounded" type="text" placeholder="TU USERNAME">
+
+    <label for="password">Password:</label>
+    <input name="password" id="password" class="input is-rounded" type="password">
+
+    <br><br>
+
+    <input class="button is-info is-rounded" type="submit" value="Registrar">
+
+</form>
+
+<%- include('includes/foot.ejs') %>
