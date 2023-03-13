@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const session = require('express-session');
+const isAuth = require('./util/is-auth');
 
 const app = express();
 
@@ -38,7 +39,7 @@ const hotcakesRutas = require('./routes/hot_cakes.routes');
 
 
 
-app.use('/hot_cakes', hotcakesRutas);
+app.use('/hot_cakes', isAuth, hotcakesRutas);
 
 app.use((request, response, next) => {
     console.log('Otro middleware!');
