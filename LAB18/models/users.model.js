@@ -1,73 +1,7 @@
 const db = require('../util/database');
+const bcrypt = require('bcryptjs');
 
-const hot_cakes = [
-    {
-        nombre: "belgas",
-        imagen: "https://t1.uc.ltmcdn.com/es/posts/8/9/7/como_hacer_waffles_con_harina_de_hot_cakes_50798_paso_5_600.jpg",
-        descripcion: "Hot cakes ricos",
-        handle: "@belgas",
-        ingredientes: "harina, huevo, mantequilla de normandía",
-        precio: "150",
-    },
-    {
-        nombre: "avena",
-        imagen: "https://www.recetasnestle.com.mx/sites/default/files/srh_recipes/99c36783d5de1a8cc8ab4a1494bcf111.jpg",
-        descripcion: "Hot cakes ricos de avena",
-        handle: "@avena",
-        ingredientes: "harina de avena, huevo, mantequilla, plátano",
-        precio: "150",
-    },
-    {
-        nombre: "japoneses",
-        imagen: "https://www.keyingredient.com/media/09/82/b08496cd78ddbd4bdda4f441160ddc6d4b15.jpg/rh/japanese-hot-cake.jpg",
-        descripcion: "Hot cakes ricos de japón",
-        handle: "@japoneses",
-        ingredientes: "harina, claras de huevo, mantequilla, polvo para hornear, azúcar",
-        precio: "150",
-    },
-    {
-        nombre: "chocolate",
-        imagen: "https://themerrymakersisters.com/wp-content/uploads/2017/01/BREKKY-FUNDAY-HOTCAKES-LANDSCAPE.jpg",
-        descripcion: "Hot cakes ricos de chocolate",
-        handle: "@chocolate",
-        ingredientes: "harina, huevo, mantequilla, cocoa",
-        precio: "150",
-    },
-    {
-        nombre: "salados",
-        imagen: "https://bulma.io/images/placeholders/1280x960.png",
-        descripcion: "Hot cakes ricos de avena",
-        handle: "@salados",
-        ingredientes: "harina, huevo, mantequilla con sal",
-        precio: "150",
-    },
-    {
-        nombre: "americanos",
-        imagen: "https://bulma.io/images/placeholders/1280x960.png",
-        descripcion: "Hot cakes ricos mantequillosos",
-        handle: "@avena",
-        ingredientes: "harina, huevo, mucha mantequilla, leche",
-        precio: "150",
-    },
-    {
-        nombre: "plátano",
-        imagen: "https://bulma.io/images/placeholders/1280x960.png",
-        descripcion: "Hot cakes ricos de plátano",
-        handle: "@platano",
-        ingredientes: "harina, huevo, mantequilla, plátano, canela, nueces",
-        precio: "150",
-    },
-    {
-        nombre: "minis",
-        imagen: "https://bulma.io/images/placeholders/1280x960.png",
-        descripcion: "Hot cakes ricos de plátano",
-        handle: "@minis",
-        ingredientes: "harina, huevo, mantequilla, leche, dispensador",
-        precio: "80",
-    },
-];
-
-module.exports = class HotCake {
+module.exports = class User {
 
     //Constructor de la clase. Sirve para crear un nuevo objeto, y en él se definen las propiedades del modelo
     constructor(mi_usuario) {
@@ -80,18 +14,21 @@ module.exports = class HotCake {
     save() {
         //hot_cakes.push(this);
         //consulta parametrizada
-        return db.execute(`
-        INSERT INTO usuarios (nombre, username, password) VALUES (?, ?, ?)
-        `,
-        [this.nombre, this.username, this.password]
-    );
+        return bcrypt.hash(this.password, 12).then((password_cifrado) => {
+            return db.execute(`
+            INSERT INTO usuarios (nombre, username, password) VALUES (?, ?, ?)
+            `,
+            [this.nombre, this.username, password_cifrado]);
+
+        } ).catch((error) => {console.log(error)});
+        
     }
 
     //Este método servirá para devolver los objetos del almacenamiento persistente.
     
     static fetch(id)
     {
-        let query = `SELECT * FROM users`;
+        let query = `SELECT * FROM usuarios`;
         if(id != 0)
         {
             query += ` WHERE id = ?`
@@ -106,7 +43,7 @@ module.exports = class HotCake {
     {
         return db.execute(
             `SELECT *
-            FROM users` 
+            FROM usuarios` 
             );  
     }
 
@@ -114,7 +51,7 @@ module.exports = class HotCake {
     {
         return db.execute(
             `SELECT *
-            FROM users
+            FROM usuarios
             WHERE id = ?`, [id] 
             );  
     }

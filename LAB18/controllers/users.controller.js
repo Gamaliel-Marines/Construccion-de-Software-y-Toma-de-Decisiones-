@@ -1,7 +1,7 @@
 const User = require('../models/users.model');
 
 exports.get_login = (request, response, next) => {
-    const mensaje = '';
+    let mensaje = '';
 
     if(request.session.mensaje != '')
     {

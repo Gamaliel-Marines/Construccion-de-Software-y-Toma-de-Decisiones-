@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Mar 13, 2023 at 05:49 PM
+-- Generation Time: Mar 13, 2023 at 06:27 PM
 -- Server version: 5.7.34
 -- PHP Version: 7.4.21
 
@@ -28,9 +28,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `usuarios` (
-  `id` int(11) NOT NULL,
-  `nombre` varchar(400) COLLATE utf8mb4_spanish2_ci NOT NULL,
-  `username` varchar(40) COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `id` int(40) NOT NULL,
+  `nombre` varchar(512) COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `username` varchar(512) COLLATE utf8mb4_spanish2_ci NOT NULL,
   `password` varchar(512) COLLATE utf8mb4_spanish2_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
@@ -54,7 +54,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(40) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
