@@ -22,6 +22,7 @@ exports.get_lista = (request, response, next) => {
         response.render('lista', {
             hot_cakes: rows,
             ultimo_hot_cake: request.session.ultimo_hot_cake || '',
+            isLoggedIn: request.session.isLoggedIn || false,
         });
 
         })
