@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Mar 13, 2023 at 11:11 PM
+-- Generation Time: Mar 14, 2023 at 02:37 AM
 -- Server version: 5.7.34
 -- PHP Version: 7.4.21
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `objetos` (
   `id` int(11) NOT NULL,
   `descripcion` varchar(512) NOT NULL,
-  `fecha` date NOT NULL,
+  `fecha` varchar(512) NOT NULL,
   `lugar` varchar(512) NOT NULL,
   `imagen` varchar(512) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

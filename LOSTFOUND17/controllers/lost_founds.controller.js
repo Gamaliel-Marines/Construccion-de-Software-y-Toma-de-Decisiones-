@@ -1,4 +1,5 @@
-const HotCake = require('../models/hot_cakes.model');
+const LOSTFOUND = require('../models/lost_founds.model');
+const HotCake = require('../models/lost_founds.model');
 
 exports.get_lista = (request, response, next) => {
     
@@ -15,37 +16,19 @@ exports.get_lista = (request, response, next) => {
     const id = request.params.id || 0;
 
 
-    HotCake.fetch(id)
+    LOSTFOUND.fetch(id)
     .then(([rows,fieldData]) => {
         console.log(rows);
 
         response.render('lista', {
-            hot_cakes: rows,
-            ultimo_hot_cake: request.session.ultimo_hot_cake || '',
+            lost_founds: rows,
+            ultimo_lostfound: request.session.ultimo_lostfound || '',
         });
 
         })
         .catch(error => {
             console.log(error);
         });
-
-
-    // HotCake.fetchAll()
-    // .then(([rows,fieldData]) => {
-    // console.log(rows);
-
-    // response.render('lista', {
-    //     hot_cakes: rows,
-    //     ultimo_hot_cake: request.session.ultimo_hot_cake || '',
-    // });
-
-    // })
-    // .catch(error => {
-    //     console.log(error);
-    // });
-
-
-
 };
 
 exports.get_nuevo = (request, response, next) => {
@@ -54,17 +37,19 @@ exports.get_nuevo = (request, response, next) => {
 
 exports.post_nuevo = (request, response, next) => {
 
-    const hot_cake = new HotCake({
-        nombre: request.body.nombre,
+    const lost_found = new LOSTFOUND({
         descripcion: request.body.descripcion,
-        handle: request.body.handle,
-        ingredientes: request.body.ingredientes,
-        precio: request.body.precio,
+        nombre: request.body.nombre,
+        matricula: request.body.matricula,
+        lugar: request.body.lugar,
+        fecha: request.body.fecha,
+        
+               
     });
 
-    hot_cake.save().then(([rows, fieldData]) => {
-        request.session.ultimo_hot_cake = hot_cake.nombre;
-        response.status(300).redirect('/hot_cakes/lista');
+    lost_found.save().then(([rows, fieldData]) => {
+        request.session.ultimo_lostfound = ultimo_lostfound.descripcion;
+        response.status(300).redirect('/lost_founds/lista');
 
     }).catch(error => {
         console.log(error);
@@ -81,8 +66,8 @@ exports.get_pedir = (request, response, next) => {
                 <meta charset="utf-8">
             </head>
             <body>
-                <h1>Hot cakes</h1>
-                <form action="/hot_cakes/pedir" method="POST">
+                <h1>LOST & FOUND</h1>
+                <form action="/lost_founds/pedir" method="POST">
                     <fieldset>
                         <legend>Escoge tu desayuno:</legend>
                         <div>
@@ -94,8 +79,8 @@ exports.get_pedir = (request, response, next) => {
                             <label for="cafe">Café</label>
                         </div>
                         <div>
-                            <input type="number" id="hot_cakes" name="hot_cakes" value="0" min="0">
-                            <label for="hot_cakes"> hot cakes</label>
+                            <input type="number" id="lost_founds" name="lost_founds" value="0" min="0">
+                            <label for="lost_founds"> LOST FOUNDS</label>
                         </div>
                     </fieldset>
                     <br>
@@ -111,7 +96,7 @@ exports.get_pedir = (request, response, next) => {
 exports.post_pedir = (request, response, next) => {
     console.log(request.body);
 
-    response.send("Pediste " + request.body.hot_cakes + " hot cakes");
+    response.send("Buscas este " + request.body.lost_founds + " objeto perdido");
 }
 
 exports.get_pedido = (request, response, next) => {

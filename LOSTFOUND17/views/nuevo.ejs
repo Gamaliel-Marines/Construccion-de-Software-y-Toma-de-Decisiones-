@@ -1,29 +1,35 @@
 <%- include('includes/head.ejs') %>
 
-<h1 class="title">Registrar hot cake</h1>
+<br>
+<h1 class="title">REGISTRAR OBJETO PERDIDO</h1>
 
 <br><br>
 
-<form action="/hot_cakes/nuevo" method="POST">
 
-    <label for="nombre">Nombre:</label>
-    <input required name="nombre" id="nombre" class="input is-rounded" type="text" placeholder="Belgas">
+<form action="/lost_founds/nuevo" method="POST">
+
+    
 
     <label for="descripcion">Descripcion:</label>
-    <input name="descripcion" id="descripcion" class="input is-rounded" type="text" placeholder="Deliciosos hot cakes">
+    <input name="descripcion" id="descripcion" class="input is-rounded" type="text" placeholder="@objeto_perdido">
 
-    <label for="handle">Handle:</label>
-    <input name="handle" id="handle" class="input is-rounded" type="text" placeholder="@hot_cake">
+    <label for="lugar">Lugar:</label>
+    <input name="lugar" id="lugar" class="input is-rounded" type="text" placeholder="lugar donde se encontro el objeto">
 
-    <label for="ingredientes">Ingredientes:</label>
-    <input name="ingredientes" id="ingredientes" class="input is-rounded" type="text" placeholder="Mantequilla, harina, huevo y leche">
+    <label for="fecha">Fecha:</label>
+    <input name="fecha" id="fecha" class="input is-rounded" type="text" placeholder="00/00/0000">
 
-    <label for="precio">Precio:</label>
-    <input name="precio" id="precio" class="input is-rounded" type="number" value="150">
+    <label for="matricula">Matricula:</label>
+    <input name="matricula" id="matricula" class="input is-rounded" type="text" placeholder="A01700000">
+
+    <label for="nombre">Nombre:</label>
+    <input required name="nombre" id="nombre" class="input is-rounded" type="text" placeholder="Nombre">
+
 
     <br><br>
 
     <input class="button is-info is-rounded" type="submit" value="Registrar">
+    <br><br>
 
 </form>
 
