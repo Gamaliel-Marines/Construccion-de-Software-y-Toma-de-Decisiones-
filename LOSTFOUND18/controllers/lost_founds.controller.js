@@ -1,37 +1,42 @@
 const LOSTFOUND = require('../models/lost_founds.model');
 
-exports.get_lista = (request, response, next) => {
-    
-    //let cookies  = request.get('Cookies')||'';
+exports.get_lista = (request, response, next) => {    
 
-    const cookies  = request.get('Cookies') || '';
+    const cookies = request.get('Cookie') || '';
 
     let consultas = cookies.split('=')[1] || 0;
 
     consultas++;
 
-    response.setHeader('Set-Cookie', 'consultas=' + consultas);
+    //Crear una cookie
+    response.setHeader('Set-Cookie', 'consultas=' + consultas + '; HttpOnly');
 
     const id = request.params.id || 0;
 
-
     LOSTFOUND.fetch(id)
-    .then(([rows,fieldData]) => {
+    .then(([rows, fieldData]) => {
         console.log(rows);
+        //console.log(fieldData);
 
-        response.render('lista', {
+        response.render('lista', { 
             lost_founds: rows,
             ultimo_lostfound: request.session.ultimo_lostfound || '',
+            isLoggedIn: request.session.isLoggedIn || false,
+            descripcion: request.session.descripcion || '',
         });
+    })
+    .catch(error => {
+        console.log(error);
+    });
 
-        })
-        .catch(error => {
-            console.log(error);
-        });
 };
 
 exports.get_nuevo = (request, response, next) => {
-    response.render('nuevo');
+    response.render('nuevo', {
+        isLoggedIn: request.session.isLoggedIn || false,
+        descripcion: request.session.descripcion || '',
+        csrfToken: request.csrfToken(), 
+    });
 };
 
 exports.post_nuevo = (request, response, next) => {
@@ -41,13 +46,11 @@ exports.post_nuevo = (request, response, next) => {
         nombre: request.body.nombre,
         matricula: request.body.matricula,
         lugar: request.body.lugar,
-        fecha: request.body.fecha,
-        
-               
+        fecha: request.body.fecha,           
     });
 
     lost_found.save().then(([rows, fieldData]) => {
-        request.session.ultimo_lostfound = LOSTFOUND.descripcion;
+        request.session.ultimo_lostfound = lost_found.descripcion;
         response.status(300).redirect('/lost_founds/lista');
 
     }).catch(error => {
