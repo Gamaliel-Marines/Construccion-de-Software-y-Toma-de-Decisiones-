@@ -19,28 +19,47 @@ exports.get_login = (request, response, next) => {
 };
 
 exports.post_login = (request, response, next) => {
-    User.fetchOne(request.body.matricula)
-    .then(([rows, fieldData]) => {
-        if (rows.length > 0) {
-            bcrypt.compare(request.body.password, rows[0].password)
-            .then((doMatch) => {
-                if (doMatch) {
-                    request.session.isLoggedIn = true;
-                    request.session.nombre = rows[0].nombre;
-                    response.redirect('/lost_founds/lista');
-                } else {
-                    request.session.mensaje = 'El usuario y/o contraseña no coinciden';
-                    response.redirect('/users/login');
-                }
-            })
-            .catch((error) => {console.log(error)});
-        } else {
-            request.session.mensaje = 'El usuario y/o contraseña no coinciden';
-            response.redirect('/users/login');
-        }
-    })
-    .catch((error) => {console.log(error)});
-}
+User.fetchOne(request.body.matricula)
+.then(([rows, fieldData]) => {
+    if (rows.length > 0) {
+        bcrypt.compare(request.body.password, rows[0].password)
+        .then((doMatch) => {
+            if (doMatch) {
+                request.session.isLoggedIn = true;
+                request.session.nombre = rows[0].nombre;
+                User.getPrivilegios(rows[0].id)
+                .then(([consulta_privilegios, fieldData]) => {
+                    console.log(consulta_privilegios);
+
+                    const privilegios = [];
+
+                    for (let privilegio of consulta_privilegios) {
+                        privilegios.push(privilegio.nombre);
+                    }
+
+                    console.log(privilegios);
+
+                    request.session.privilegios = privilegios;
+
+                    return request.session.save(err => {
+                        response.redirect('/lost_founds/lista');
+                    });
+                })
+                .catch((error) => {console.log(error)});
+                
+            } else {
+                request.session.mensaje = 'El usuario y/o contraseña no coinciden';
+                response.redirect('/users/login');
+            }
+        })
+        .catch((error) => {console.log(error)});
+    } else {
+        request.session.mensaje = 'El usuario y/o contraseña no coinciden';
+        response.redirect('/users/login');
+    }
+})
+.catch((error) => {console.log(error)});
+};
 
 exports.get_signup = (request, response, next) => {
     response.render('signup', {

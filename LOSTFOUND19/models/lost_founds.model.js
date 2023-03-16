@@ -100,20 +100,4 @@ module.exports = class LOSTFOUND {
         return db.execute(query);  
     }
     
-    static fetchAll()
-    {
-        return db.execute(
-            `SELECT *
-            FROM lobjetos` 
-            );  
-    }
-
-    static fetchOne(id)
-    {
-        return db.execute(
-            `SELECT *
-            FROM objetos
-            WHERE id = ?`, [id] 
-            );  
-    }
 }

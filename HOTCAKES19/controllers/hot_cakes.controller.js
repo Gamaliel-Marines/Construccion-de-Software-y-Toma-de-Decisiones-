@@ -23,6 +23,7 @@ exports.get_lista = (request, response, next) => {
             ultimo_hot_cake: request.session.ultimo_hot_cake || '',
             isLoggedIn: request.session.isLoggedIn || false,
             nombre: request.session.nombre || '',
+            privilegios: request.session.privilegios || [],
         });
     })
     .catch(error => {

@@ -1,9 +1,10 @@
 <%- include('includes/head.ejs') %>
-
 <br>
 <h1 class="title">LOST FOUNDS</h1>
 
-<a href="/lost_founds/nuevo" class="button is-link is-rounded">AGREGAR</a>
+<% if(privilegios.indexOf('registrar_objeto') >= 0) { %>
+    <a href="/lost_founds/nuevo" class="button is-link is-rounded">AGREGAR</a>
+<% } %>
 
 <br><br>
 
@@ -26,10 +27,8 @@
                             </div>
                             <div class="media-content">
                             <p id="ctitle" class="title is-4"><%= lost_found.descripcion %></p>
-                            <p id="csubtitle" class="subtitle is-6">Nombre: <%= lost_found.nombre %> <br> Matricula: <%= lost_found.matricula %>  </p>
                             </div>
                         </div>
-                    
                         <div class="content">
                             Lugar:
                             <br>
@@ -55,7 +54,6 @@
         El ultimo objeto perdido fue: <%= ultimo_lostfound %>
     </div>
 
-
 <%} else{%>
 
     <div style="background-color: rgb(202, 248, 255); font-weight: bolder;" class = "notification is-link is-light">
@@ -63,9 +61,9 @@
     </div>
     <%}%>
 
-<a href="/lost_founds/nuevo" class="button is-link is-rounded">Registrar</a>
-
+<% if(privilegios.indexOf('registrar_objeto') >= 0) { %>
+    <a href="/lost_founds/nuevo" class="button is-link is-rounded">Registrar</a>
+<% } %>
 <br>
 <br>
-
 <%- include('includes/foot.ejs') %>

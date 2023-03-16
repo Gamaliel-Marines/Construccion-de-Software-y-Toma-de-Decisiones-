@@ -16,14 +16,18 @@ exports.get_lista = (request, response, next) => {
     LOSTFOUND.fetch(id)
     .then(([rows, fieldData]) => {
         console.log(rows);
+        
         //console.log(fieldData);
 
         response.render('lista', { 
             lost_founds: rows,
             ultimo_lostfound: request.session.ultimo_lostfound || '',
             isLoggedIn: request.session.isLoggedIn || false,
-            descripcion: request.session.descripcion || '',
+            nombre: request.session.nombre || '',
+            privilegios: request.session.privilegios || [],
         });
+
+        
     })
     .catch(error => {
         console.log(error);
@@ -49,13 +53,13 @@ exports.post_nuevo = (request, response, next) => {
         fecha: request.body.fecha,           
     });
 
-    lost_found.save().then(([rows, fieldData]) => {
-        request.session.ultimo_lostfound = lost_found.descripcion;
+    lost_found.save()
+    .then(([rows, fieldData]) => {
+        request.session.ultimo_lostfound = LOSTFOUND.descripcion;
+
         response.status(300).redirect('/lost_founds/lista');
 
-    }).catch(error => {
-        console.log(error);
-    });
+    }).catch(error => console.log(error));
     
 };
 
@@ -99,8 +103,8 @@ exports.post_pedir = (request, response, next) => {
     console.log(request.body);
 
     response.send("Buscas este " + request.body.lost_founds + " objeto perdido");
-}
+};
 
 exports.get_pedido = (request, response, next) => {
     response.sendFile(path.join(__dirname, '..', 'views', 'index.html'));
-}
+};

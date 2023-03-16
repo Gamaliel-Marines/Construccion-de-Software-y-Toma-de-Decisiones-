@@ -31,10 +31,7 @@ app.use((request, response, next) => {
     next(); 
 });
 
-app.use('/home', (request, response, next) => {
 
-    response.send('Bienvenido a casa!'); 
-});
 
 const rutasUsers = require('./routes/users.routes');
 
@@ -54,3 +51,4 @@ app.use((request, response, next) => {
 });
 
 app.listen(3000);
+

@@ -30,4 +30,13 @@ module.exports = class User {
         `, [matricula]);
     }
 
+    static getPrivilegios(id) {
+        return db.execute(`
+            SELECT p.nombre
+            FROM privilegios p, rol_privilegio rp, rol r, usuarios_rol ur, usuarios u
+            WHERE u.id = ? AND u.id = ur.idUsuario AND ur.idRol = r.id 
+                AND rp.idRol = r.id AND rp.idPrivilegio = p.id
+        `, [id]);
+    }
+
 }
