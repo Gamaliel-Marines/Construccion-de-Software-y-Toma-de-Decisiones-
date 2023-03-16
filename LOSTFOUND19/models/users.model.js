@@ -22,14 +22,6 @@ module.exports = class User {
         .catch((error) => { console.log(error) });
     }
 
-    static fetchAll()
-    {
-        return db.execute(
-            `SELECT *
-            FROM usuarios` 
-            );  
-    }
-
     static fetchOne(matricula) {
         return db.execute(`
             SELECT * 

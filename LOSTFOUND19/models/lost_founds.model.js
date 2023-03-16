@@ -77,7 +77,7 @@ module.exports = class LOSTFOUND {
         this.fecha = my_lostfound.fecha || "01/01/12";
         this.matricula = my_lostfound.matricula || "A01700000";
         this.nombre = my_lostfound.nombre || "Jorge";
-        this.imagen = my_lostfound.imagen || "https://www.centroeleia.edu.mx/blog/wp-content/uploads/2017/10/objeto-transicional.jpg";
+        this.imagen = my_lostfound.imagen || "https://bulma.io/images/placeholders/1280x960.png";
     
     }
      
