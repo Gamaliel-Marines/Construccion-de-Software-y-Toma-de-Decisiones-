@@ -18,9 +18,16 @@ WHERE YEAR(entregan.fecha) = 1997;
  Para cada proveedor, obtener la razón social del proveedor, número de entregas e importe total de las entregas realizadas.
 */
 
-SELECT P.RazonSocial, SUM(cantidad * materiales.precio * (1 + materiales.impuesto / 100)) AS Importetotal, COUNT(Clave) AS NumEntregas
-From P provedor
+SELECT P.RazonSocial, SUM(cantidad * materiales.precio * (1 + materiales.impuesto / 100)) AS Importetotal, COUNT(*) AS NumEntregas
+From proveedores P
 INNER JOIN materiales ON entregan.clave = materiales.clave
-WHERE 
+INNER JOIN entregan ON proveedores.rfc = materiales.rfc
+GROUP BY p.RazonSocial;
+
+
+
+
+
+
 
 
