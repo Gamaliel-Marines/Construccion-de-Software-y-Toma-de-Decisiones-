@@ -29,9 +29,7 @@ exports.get_lista = (request, response, next) => {
 
         
     })
-    .catch(error => {
-        console.log(error);
-    });
+    .catch(error => {console.log(error);});
 
 };
 
