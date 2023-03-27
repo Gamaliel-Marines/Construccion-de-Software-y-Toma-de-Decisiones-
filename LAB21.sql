@@ -1,3 +1,6 @@
+/* Erik Cabrera A01334318 */
+/* Gamaliel Marines A01708746 */
+
 /*
 Materiales(Clave, Descripción, Costo, PorcentajeImpuesto)
 Proveedores(RFC, RazonSocial)
