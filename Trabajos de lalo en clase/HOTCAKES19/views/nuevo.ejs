@@ -3,8 +3,8 @@
 <h1 class="title">Registrar hot cake</h1>
 
 <br><br>
-
-<form action="/hot_cakes/nuevo" method="POST">
+<!-- cambios enctype="multipart/form-data" -->
+<form action="/hot_cakes/nuevo" method="POST" enctype="multipart/form-data">
 
     <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
 
@@ -22,6 +22,10 @@
 
     <label for="precio">Precio:</label>
     <input name="precio" id="precio" class="input is-rounded" type="number" value="150">
+    
+    <!-- subir imagen -->
+    <label for="imagen">Imagen:</label>
+    <input name="imagen" id="imagen" class="input is-rounded" type="file">
 
     <br><br>
 
