@@ -1,0 +1,143 @@
+<%- include('includes/head.ejs') %>
+<br>
+<h1 class="title">LOST FOUNDS</h1>
+
+<% if(privilegios.indexOf('registrar_objeto') >= 0) { %>
+    <a href="/lost_founds/nuevo" class="button is-link is-rounded">AGREGAR</a>
+<% } %>
+
+<br>
+<br>
+<label for="buscar">Buscar en objetos perdidos:</label>
+<input name="buscar" id="buscar" class="input is-info" type="text" placeholder="buscar por descripcion, fecha o lugar">
+
+<br><br>
+<br>
+
+<div id="resultados">
+<% if (lost_founds.length > 0) { %>
+    <div id="containercards" class="columns is-multiline">
+        <% for (let lost_found of lost_founds) { %>
+            <div class="column is-3">
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="/uploads/<%= lost_found.imagen %>" alt="Placeholder image">
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-left">
+                            <figure class="image is-48x48">
+                                <img style="object-fit: cover;" src="/uploads/<%= lost_found.imagen %>" alt="Placeholder image">
+                            </figure>
+                            </div>
+                            <div class="media-content">
+                            <p id="ctitle" class="title is-4"><%= lost_found.descripcion %></p>
+                            </div>
+                        </div>
+                        <div class="content">
+                            Lugar:
+                            <br>
+                            <%= lost_found.lugar %> 
+                            <br>
+                            Fecha:
+                            <br>
+                            <%= lost_found.fecha %> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+    </div>
+<% } else { %>
+    <h1>NO HAN PERDIDO NADA SOLO TÚ</h1>
+<% } %> 
+</div>  
+
+<br><br>
+
+<%if (ultimo_lostfound != ''){ %>
+    <div id="notobjperdido" class = "notification is-link is-light">
+        El ultimo objeto perdido fue: <%= ultimo_lostfound %>
+    </div>
+
+<%} else{%>
+
+    <div style="background-color: rgb(202, 248, 255); font-weight: bolder;" class = "notification is-link is-light">
+        No se han perdido objetos recientemente %>
+    </div>
+    <%}%>
+
+<% if(privilegios.indexOf('registrar_objeto') >= 0) { %>
+    <a href="/lost_founds/nuevo" class="button is-link is-rounded">Registrar</a>
+<% } %>
+<br>
+<br>
+
+<script>
+    document.getElementById("buscar").onkeyup = () =>
+    {
+        const valor_busqueda = document.getElementById("buscar").value;
+        //función que manda la petición asíncrona
+        fetch('/lost_founds/buscar/', + valor_busqueda, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        }).then(result => {
+            return result.json(); //Regresa otra promesa
+        }).then(data => {
+            //Modificamos el DOM de nuestra página de acuerdo a los datos de la segunda promesa
+            //...
+            //console.log("");
+            let resultados = "";
+            
+            if (data.lost_founds.length > 0) {
+            
+                resultados += `<div id="containercards" class="columns is-multiline">`
+                for (let lost_found of data.lost_founds) { 
+                    resultados += `<div class="column is-3">
+                        <div class="card">
+                            <div class="card-image">
+                                <figure class="image is-4by3">
+                                    <img src="/uploads/${lost_found.imagen}" alt="Placeholder image">
+                                </figure>
+                            </div>
+                            <div class="card-content">
+                                <div class="media">
+                                    <div class="media-left">
+                                    <figure class="image is-48x48">
+                                        <img style="object-fit: cover;" src="/uploads/${lost_found.imagen}" alt="Placeholder image">
+                                    </figure>
+                                    </div>
+                                    <div class="media-content">
+                                    <p id="ctitle" class="title is-4">${lost_found.descripcion}</p>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    Lugar:
+                                    <br>
+                                    ${lost_found.lugar} 
+                                    <br>
+                                    Fecha:
+                                    <br>
+                                    ${lost_found.fecha} 
+                                </div>
+                            </div>
+                        </div>
+                    </div>`
+                }
+                resultados += `</div>`
+        } else {
+            resultados += `<h1>NO HAN PERDIDO NADA SOLO TÚ</h1>`
+        }
+
+        document.getElementById("resultados").innerHTML = resultados;
+
+        }).catch(err => {
+            console.log(err);
+        });
+    }
+</script>
+<%- include('includes/foot.ejs') %>
