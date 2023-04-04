@@ -3,12 +3,13 @@ const LOSTFOUND = require('../models/lost_founds.model');
 exports.get_buscar = (request, response, next) => 
 {
     LOSTFOUND.find(request.params.valor_busqueda).then(([rows, fieldData]) => {
-        response.status(200).json({hot_cakes: rows});
+        response.status(200).json({lost_founds: rows});
+        console.log(rows);
     })
     .catch((error) => {
         response.status(500).json({message: "Internal Server Error"});
     });
-};
+}
 
 exports.get_lista = (request, response, next) => {    
 

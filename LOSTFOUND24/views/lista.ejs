@@ -80,7 +80,7 @@
     {
         const valor_busqueda = document.getElementById("buscar").value;
         //función que manda la petición asíncrona
-        fetch('/lost_founds/buscar/', + valor_busqueda, {
+        fetch('/lost_founds/buscar/' + valor_busqueda, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -95,7 +95,7 @@
             
             if (data.lost_founds.length > 0) {
             
-                resultados += `<div id="containercards" class="columns is-multiline">`
+                resultados += `<div id="containercards" class="columns is-multiline">`;
                 for (let lost_found of data.lost_founds) { 
                     resultados += `<div class="column is-3">
                         <div class="card">
@@ -126,11 +126,11 @@
                                 </div>
                             </div>
                         </div>
-                    </div>`
+                    </div>`;
                 }
-                resultados += `</div>`
+                resultados += `</div>`;
         } else {
-            resultados += `<h1>NO HAN PERDIDO NADA SOLO TÚ</h1>`
+            resultados += `<h1>NO HAN PERDIDO NADA SOLO TÚ</h1>`;
         }
 
         document.getElementById("resultados").innerHTML = resultados;

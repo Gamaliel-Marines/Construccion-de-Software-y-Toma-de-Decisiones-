@@ -1,2 +1,6 @@
 Gamaliel Marines A01708746
 Manuel Villalpando A01352033
+Erik Cabrera
+
+La desventaja de usar store procedures algunas veces puede ser la complejidad de los mismos, llegando a hacer algunos tan difíciles que resulte complejo el codificarlos o razonar para ver si es que devuelve o no algún valor. Dependen de la base de datos y si llegan a producir un error dentro de los store procedures puede ser difícil depurar el código.
+Si no se optimizan adecuadamente pueden afectar el rendimiento y hacer la base más pesada.
