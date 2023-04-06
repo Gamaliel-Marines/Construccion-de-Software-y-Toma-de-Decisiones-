@@ -17,11 +17,6 @@ SET time_zone = "America/Mexico_City";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
---
--- Base de datos: `Lab15`
---
-
--- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `operaciones_bancarias`
