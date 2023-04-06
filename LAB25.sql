@@ -1,12 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 5.1.1
--- https://www.phpmyadmin.net/
---
--- Servidor: localhost:8889
--- Tiempo de generación: 31-03-2022 a las 18:28:55
--- Versión del servidor: 5.7.34
--- Versión de PHP: 7.4.21
-
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "America/Mexico_City";
